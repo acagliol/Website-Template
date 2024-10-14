@@ -1,0 +1,600 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+<style>
+  #tabsDiv {
+    top: 89px;
+    height: 100%;
+  }
+
+  #tabsDiv ul {
+    height: 200px;
+    padding: 0px 5px;
+  }
+
+  #tabsDiv li {
+    width: 15%;
+    height: 60px;
+  }
+
+  #tabsDiv button {
+    float: left;
+    background-color: #f1f0f4;
+  }
+
+  /* Button to open the content */
+  #tabsDiv button {
+    display: block;
+    background-color: #cccccc;
+    font-style: oblique;
+    color: black;
+    font-size: 16px;
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    border-color: black;
+    padding: none;
+    cursor: pointer;
+  }
+
+  /* Button styling on mouse hover */
+  #tabsDiv button:hover {
+    color: #f1f1f1;
+  }
+
+  #tabsDiv button.active {
+    background-color: #Fbfbfb;
+  }
+
+  /* Content for tabs*/
+  .contentClass {
+    display: none;
+    color: black;
+    position: absolute;
+    left: 22.5%;
+    padding: 0px 15px;
+    width: 77%;
+    border-style: none;
+    height: 100%;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    width: 10px;
+  }
+
+  tr {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>
+
+<style type="text/css">
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>
+
+<script>
+  function displayContent(event, contentNameID) {
+
+    let content =
+      document.getElementsByClassName("contentClass");
+    let totalCount = content.length;
+
+    // Loop through the content class
+    // and hide the tabs first
+    for (let count = 0;
+      count < totalCount; count++) {
+      content[count].style.display = "none";
+    }
+
+    let links =
+      document.getElementsByClassName("linkClass");
+    totalLinks = links.length;
+
+    // Loop through the links and
+    // remove the active class
+    for (let count = 0;
+      count < totalLinks; count++) {
+      links[count].classList.remove("active");
+    }
+
+    // Display the current tab
+    document.getElementById(contentNameID)
+      .style.display = "block";
+
+    // Add the active class to the current tab
+    event.currentTarget.classList.add("active");
+  }
+</script>
+<style>
+  table,
+  td {
+    border: 1px solid black;
+    width: 150px;
+    text-align: center;
+  }
+
+  .content-area {
+    z-index: 10;
+    position: relative;
+  }
+
+  .tablestyle {
+    background-color: white;
+    color: black;
+    width: 100%;
+  }
+</style>
+
+<div id="tabsDiv">
+  <div id="Total Master Schedule" class="contentClass">
+    <h3>Total Master Schedule</h3>
+
+  </div>
+
+  <div id="Athletics" class="contentClass">
+    <div>
+      {% for department, schedule in schedules.items %}
+      {% if department == 'ATH' %}
+      <table class='tablestyle'>
+        <tr style="background-color: grey; height: 40px color= white;">
+          <th>Teacher</th>
+          <th>1st Period</th>
+          <th>2nd Period</th>
+          <th>3rd Period</th>
+          <th>4th Period</th>
+          <th>5th Period</th>
+          <th>6th Period</th>
+          <th>7th Period</th>
+          <th>8th Period</th>
+        </tr>
+
+        {% for row in schedule %}
+        {% if not forloop.first %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div id="Career & Technical Education(CTE)" class="contentClass">
+    <div>
+      {% for department, schedule in schedules.items %}
+      {% if department == 'CTE' %}
+      <table class='tablestyle'>
+        <tr style="background-color: grey; height: 40px color= white;">
+          <th>Teacher</th>
+          <th>1st Period</th>
+          <th>2nd Period</th>
+          <th>3rd Period</th>
+          <th>4th Period</th>
+          <th>5th Period</th>
+          <th>6th Period</th>
+          <th>7th Period</th>
+          <th>8th Period</th>
+        </tr>
+
+        {% for row in schedule %}
+        {% if not forloop.first %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+
+  <div id="ACC" class="contentClass">
+    <h3>ACC</h3>
+    {% for department, schedule in schedules.items %}
+    {% if department == 'ACC' %}
+    <table class='tablestyle'>
+      <tr style="background-color: grey;">
+        <th>Teacher</th>
+        <th>1st Period</th>
+        <th>2nd Period</th>
+        <th>3rd Period</th>
+        <th>4th Period</th>
+        <th>5th Period</th>
+        <th>6th Period</th>
+        <th>7th Period</th>
+        <th>8th Period</th>
+      </tr>
+
+      {% for row in schedule %}
+      {% if not forloop.first %}
+      <tr>
+        {% for cell in row %}
+        <td>{{ cell }}</td>
+        {% endfor %}
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </table>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div id="English Language Arts (ELA)" class="contentClass">
+    {% for department, schedule in schedules.items %}
+    {% if department == 'ENG' %}
+    <table class='tablestyle'>
+      <tr style="background-color: grey; height: 40px color= white;">
+        <th>Teacher</th>
+        <th>1st Period</th>
+        <th>2nd Period</th>
+        <th>3rd Period</th>
+        <th>4th Period</th>
+        <th>5th Period</th>
+        <th>6th Period</th>
+        <th>7th Period</th>
+        <th>8th Period</th>
+      </tr>
+
+      {% for row in schedule %}
+      {% if not forloop.first %}
+      <tr>
+        {% for cell in row %}
+        <td>{{ cell }}</td>
+        {% endfor %}
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </table>
+    {% endif %}
+    {% endfor %}
+
+  </div>
+  <div id="Fine Arts" class="contentClass">
+    <div>
+      {% for department, schedule in schedules.items %}
+      {% if department == 'FINE_ART' %}
+      <table class='tablestyle'>
+        <tr style="background-color: grey; height: 40px color= white;">
+          <th>Teacher</th>
+          <th>1st Period</th>
+          <th>2nd Period</th>
+          <th>3rd Period</th>
+          <th>4th Period</th>
+          <th>5th Period</th>
+          <th>6th Period</th>
+          <th>7th Period</th>
+          <th>8th Period</th>
+        </tr>
+
+        {% for row in schedule %}
+        {% if not forloop.first %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+  <!-- <div id="International Baccalaureate" class="contentClass">
+    <h3>International Baccalaureate</h3>
+    <div>
+      {% for department, schedule in schedules.items %}
+      {% if department == 'ENG' %}
+      <table class='tablestyle'>
+        <tr style="background-color: grey; height: 40px color= white;">
+          <th>Teacher</th>
+          <th>1st Period</th>
+          <th>2nd Period</th>
+          <th>3rd Period</th>
+          <th>4th Period</th>
+          <th>5th Period</th>
+          <th>6th Period</th>
+          <th>7th Period</th>
+          <th>8th Period</th>
+        </tr>
+
+        {% for row in schedule %}
+        {% if not forloop.first %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+  </div> -->
+  <div id="Mathematics" class="contentClass">
+    <div>
+      {% for department, schedule in schedules.items %}
+      {% if department == 'MATH' %}
+      <table class='tablestyle'>
+        <tr style="background-color: grey; height: 40px color= white;">
+          <th>Teacher</th>
+          <th>1st Period</th>
+          <th>2nd Period</th>
+          <th>3rd Period</th>
+          <th>4th Period</th>
+          <th>5th Period</th>
+          <th>6th Period</th>
+          <th>7th Period</th>
+          <th>8th Period</th>
+        </tr>
+
+        {% for row in schedule %}
+        {% if not forloop.first %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+  <div id="Science" class="contentClass">
+    <div>
+      {% for department, schedule in schedules.items %}
+      {% if department == 'SCI' %}
+      <table class='tablestyle'>
+        <tr style="background-color: grey; height: 40px color= white;">
+          <th>Teacher</th>
+          <th>1st Period</th>
+          <th>2nd Period</th>
+          <th>3rd Period</th>
+          <th>4th Period</th>
+          <th>5th Period</th>
+          <th>6th Period</th>
+          <th>7th Period</th>
+          <th>8th Period</th>
+        </tr>
+
+        {% for row in schedule %}
+        {% if not forloop.first %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div id="Social Studies" class="contentClass">
+    <div>
+      {% for department, schedule in schedules.items %}
+      {% if department == 'SOCIAL_STUDIES' %}
+      <table class='tablestyle'>
+        <tr style="background-color: grey; height: 40px color= white;">
+          <th>Teacher</th>
+          <th>1st Period</th>
+          <th>2nd Period</th>
+          <th>3rd Period</th>
+          <th>4th Period</th>
+          <th>5th Period</th>
+          <th>6th Period</th>
+          <th>7th Period</th>
+          <th>8th Period</th>
+        </tr>
+
+        {% for row in schedule %}
+        {% if not forloop.first %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+  <div id="Special Programs & Services" class="contentClass">
+    <div>
+      {% for department, schedule in schedules.items %}
+      {% if department == 'SPED' %}
+      <table class='tablestyle'>
+        <tr style="background-color: grey; height: 40px color= white;">
+          <th>Teacher</th>
+          <th>1st Period</th>
+          <th>2nd Period</th>
+          <th>3rd Period</th>
+          <th>4th Period</th>
+          <th>5th Period</th>
+          <th>6th Period</th>
+          <th>7th Period</th>
+          <th>8th Period</th>
+        </tr>
+
+        {% for row in schedule %}
+        {% if not forloop.first %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+  <div id="World Languages" class="contentClass">
+    <div>
+      {% for department, schedule in schedules.items %}
+      {% if department == 'WORLD_LANG' %}
+      <table class='tablestyle'>
+        <tr style="background-color: grey; height: 40px color= white;">
+          <th>Teacher</th>
+          <th>1st Period</th>
+          <th>2nd Period</th>
+          <th>3rd Period</th>
+          <th>4th Period</th>
+          <th>5th Period</th>
+          <th>6th Period</th>
+          <th>7th Period</th>
+          <th>8th Period</th>
+        </tr>
+
+        {% for row in schedule %}
+        {% if not forloop.first %}
+        <tr>
+          {% for cell in row %}
+          <td>{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+
+  <ul class="ulClass" style="height:100%; background-color: #2476DB; ">
+    <li style="list-style-type:none; height: 0;">
+      <button class="linkClass" onclick="displayContent(event, 'Total Master Schedule')">
+        Total Master Schedule
+      </button>
+    </li>
+
+    <li style="list-style-type:none;">
+      <button class="linkClass" onclick="displayContent(event, 'Athletics')">
+        Athletics
+      </button>
+    </li>
+
+    <li style="list-style-type:none;">
+      <button class="linkClass" onclick="displayContent(event, 'Career & Technical Education(CTE)')">
+        Career & Technical Education(CTE)
+      </button>
+    </li>
+
+    <li style="list-style-type:none;">
+      <button class="linkClass" onclick="displayContent(event, 'ACC')">
+        ACC
+      </button>
+    </li>
+    <li style="list-style-type:none; height: 0;">
+      <button class="linkClass" onclick="displayContent(event, 'English Language Arts (ELA)')">
+        English Language Arts (ELA)
+      </button>
+    </li>
+    <li style="list-style-type:none;">
+      <button class="linkClass" onclick="displayContent(event, 'Fine Arts')">
+        Fine Arts
+      </button>
+    </li>
+    <!-- <li style="list-style-type:none;">
+      <button class="linkClass" onclick="displayContent(event, 'International Baccalaureate')">
+        International Baccalaureate
+      </button>
+    </li> -->
+    <li style="list-style-type:none;">
+      <button class="linkClass" onclick="displayContent(event, 'Mathematics')">
+        Mathematics
+      </button>
+    </li>
+    <li style="list-style-type:none;">
+      <button class="linkClass" onclick="displayContent(event, 'Science')">
+        Science
+      </button>
+    </li>
+    <li style="list-style-type:none;">
+      <button class="linkClass" onclick="displayContent(event, 'Social Studies')">
+        Social Studies
+      </button>
+    </li>
+    <li style="list-style-type:none;">
+      <button class="linkClass" onclick="displayContent(event, 'Special Programs & Services')">
+        Special Programs & Services
+      </button>
+    </li>
+    <li style="list-style-type:none;">
+      <button class="linkClass" onclick="displayContent(event, 'World Languages')">
+        World Languages
+      </button>
+    </li>
+  </ul>
+</div>
+
+
+
+
+{% endblock content %}

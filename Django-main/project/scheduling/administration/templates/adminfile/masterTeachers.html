@@ -1,0 +1,306 @@
+
+{% extends 'main.html' %}
+
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href={% static "styling.css" %}>
+<style>
+  .masterBody {
+    top: 80px;
+  }
+</style>
+
+<style>
+    .adminButtons {
+      width: 32%;
+        background-color: #5293e3; /* Green background */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition-duration: 0.4s;
+    }
+    
+    .adminButtons:hover {
+      background-color: #ff2c1e; /* Darker green on hover */
+      color: black;
+  }
+
+
+
+    .addTeacherButton {
+      width: 240px;
+      margin-left: 10px;
+      margin-top: 10px;
+      font-size: 28px;
+      color: white; 
+      font-style: oblique; 
+      border-radius: 20px; /* Adjust this value to make the button more round */
+      padding: 10px 20px;
+      
+      background-color: red; /* Initial background color */
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.4s; 
+      
+    }
+
+    .addTeacherButton:hover {
+      color: black;
+      background-color: #5293e3; /* New background color on hover */
+    }
+
+
+    .dropdown-menu {
+      border-radius: 0px;
+      
+      width: 50px;
+      background-color: white;
+    }
+</style>
+
+<style>
+  table, th, td {
+    border:1px solid black;
+    width: 10px;
+  }
+</style>  
+
+<style type ="text/css"> 
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>  
+
+<style type ="text/css"> 
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .teacherButton {
+    border: 0px;
+    background: transparent;
+  }
+ 
+
+
+  .popup {
+   
+    width: 169px;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+
+  .popup .popuptext {
+    position: absolute;
+    left: 30%;
+    top: 40%;
+    visibility: hidden;
+    width: 1000px;
+    height: -20px;
+    background-color: #555;
+  
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    
+    
+    margin-left: -80px;
+  }
+
+  
+  /* Popup arrow */
+
+
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+
+  
+  </style>
+
+
+ 
+
+
+  <body class= "masterBody">
+    <button class = "adminButtons" onclick = "location.href='{% url "adminfile.master" %}'"> Schedule </button>
+    <button class = "adminButtons" onclick = "location.href='{% url "adminfile.masterTeachers" %}'" style="background-color:#9D9D9D;"> Teachers </button>
+    <button class = "adminButtons" onclick = "location.href='{% url "adminfile.classes" %}'"> Classes </button>
+
+    <button class = "addTeacherButton"> Add a Teacher </button>
+    
+    <a class="nav-link dropdown-toggle dropdownextra" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style= "margin-left: 20%; margin-top: -2.25%; height: 35px; width: 310px; font-size: 23px; color: black; font-style: oblique; background-color: #CCCCCC;">
+      Department
+    </a> 
+    <ul class="dropdown-menu" style = "width: 310px;">
+      <li><a class="dropdown-item" href="#">All Departments</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Math</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">English</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" >Science</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" >Social Studies</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">World Languages</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Fine Arts</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Health/Physical Education</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">College Career and Leadership Development</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Career and Technical Education</a></li>
+    </ul>
+    
+    <a class="nav-link dropdown-toggle dropdownextra" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style= "margin-left: 40%; margin-top: -2.25%; height: 35px; font-size: 23px; color: black; font-style: oblique; background-color: #CCCCCC;">
+      Class
+    </a> 
+    <ul class="dropdown-menu" style = "">
+      <li><a class="dropdown-item" href="#">All Teachers</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" >N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" >N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>  
+    </ul>
+    <div class="search-container" style="margin-left: 75%; margin-top:-2.5%;">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search Teachers..." name="search" style="width: 333px; height: 35px;">
+        <button type="submit" style="position: fixed; width: 65px; height: 30px; margin-top: 3px; margin-left: 3px; background: white; background-position: center; background-repeat: no-repeat;  background-image: url('{% static "searchImage2.png" %}');"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  <p>
+    
+    
+    <script>
+    // When the user clicks on div, open the popup
+    function myFunction() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+   
+    </script>
+    <table style="width:100%; height: 726px; overflow-y: scroll; display:block;">
+      <tr style="background-color: grey;">
+        <th><div class="popup">Teacher X
+            <span class="popuptext" id="myPopup"> Qualifications:  Number of classes: <button style="width: 70px; height: 50px;" onclick="myFunction()">close</button>
+            </span>
+            </div></th>
+        <th>0 Period</th>
+        <th>1st Period</th>
+        <th>2nd Period</th>
+        <th>3rd Period</th>
+        <th>4th Period</th>
+        <th>5th Period</th>
+        <th>6th Period</th>
+        <th>7th Period</th>
+        <th>8th Period</th>
+      </tr>
+      {% for item in teachers %}
+
+      {% if item|divisibleby:2 %}
+      <tr style="background-color: white;">  
+      
+      {% else %}  
+      <tr style="background-color: lightgrey;">
+      {% endif %}
+      {% for num in n %}
+      {% if num == 0 %}
+      <td>
+        <div class="popup" onclick="myFunction()">
+          Teacher {{item}}
+        </div>
+      </td>
+        {% else %}
+        <td>
+            <div class="popup" onclick="myFunction()">Class {{item}}<div>
+        </td>
+        {% endif %}
+      {% endfor %}
+       
+          
+      </tr>
+
+    {% endfor %}
+     
+    </table>
+  </p>
+  
+
+</body>
+
+{% endblock content %}

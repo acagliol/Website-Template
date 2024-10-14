@@ -1,0 +1,67 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+    #square {
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+</style>
+
+<label for="Send to" style="position: absolute; margin-left: 5px; margin-top: 32px;">Send To:</label>
+
+<label for="Recent Messages" style="position: absolute; margin-left: 900px; margin-top: 10px; font-size: 50px;">Recent Messages</label>
+
+<input type="checkbox" id = "Admin" name="Admin" value="Admin" style="position: absolute; margin-top: 38px; margin-left: 75px;">
+<label for="Admin" style="position: absolute; margin-top: 32px; margin-left: 92px;">Admin</label>
+
+<input type="checkbox" id = "Counselors" name="Counselors" value="Counselors" style="position: absolute; margin-top: 38px; margin-left: 145px;">
+<label for="Counselors" style="position: absolute; margin-top: 32px; margin-left: 162px;">Counselors</label>
+
+<input type="checkbox" id = "Teachers" name="Teachers" value="Teachers" style="position: absolute; margin-top: 38px; margin-left: 247px;">
+<label for="Teachers" style="position: absolute; margin-top: 32px; margin-left: 264px;">Teachers</label>
+
+<input type="checkbox" id = "Students" name="Students" value="Students" style="position: absolute; margin-top: 38px; margin-left: 330px;">
+<label for="Students" style="position: absolute; margin-top: 32px; margin-left: 348px;">Students</label>
+
+<input type="checkbox" id = "All" name="All" value="All" style="position: absolute; margin-top: 38px; margin-left: 415px;"  >
+<label for="All" style="position: absolute; margin-top: 32px; margin-left: 435px;" onchange="allCheck()" >All</label>
+
+<input type="text" id = "Title" placeholder="Title..." style="position: absolute; margin-top: 80px; width: 611px;">
+
+<textarea id="textarea" rows="15" cols="80" style="position: absolute; margin-top: 135px;"></textarea>
+
+<input type="button" value="Send" style="position: absolute; margin-top: 530px; height: 50px; width: 100px;" onclick="addText()">
+
+<div id = "messages" style="height:700px; width:750px; position: absolute; margin-left: 900px; margin-top: 100px; border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" >
+   
+    </div>
+
+<script>
+
+function addText()
+{
+    document.getElementById('messages').innerHTML += "\n" + document.getElementById('textarea').value ;
+    
+    
+}
+
+function allCheck() {
+
+   var all = document.getElementById('All')
+   var admin = document.getElementById('Admin')
+
+   if(all.checked == true) {
+        admin.removeAttribute(checked);
+   }
+
+ 
+
+}
+
+
+
+</script>
+{% endblock content %}

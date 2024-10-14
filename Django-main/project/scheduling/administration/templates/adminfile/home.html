@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{%  load static  %}
+<link rel="stylesheet" type="text/css" href={% static "styling.css" %}>
+<style>
+    .background {
+
+
+    }
+    .homeBody {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        top: 80px;
+        position: fixed;
+        background-image: url('{% static "theHomeBackground.webp" %}');
+        background-repeat: no-repeat;
+        background-size: 1500px;
+        top: -10px;
+        
+    }
+
+    .homeButton {
+        width: 100%;
+        background-color:#CCCCCC;
+    }
+
+    .homeButton:hover {
+        width: 100%;
+        background-color:#efefef;
+    }
+</style>
+
+<div class="homeBody">
+    {% for user in users %}
+        
+    {% endfor %}
+    
+
+</div>
+{% endblock content %}
+
+

@@ -1,0 +1,75 @@
+	{% load static %}
+	<style type="text/css">
+		.sidenav {
+			height:100%;
+			width: 172px;
+			position: fixed;
+			z-index:1;
+			top: 80px;
+			left:0;
+			background-color:#5293E3;
+			background-image: url('{% static "sideBar.jpg" %}');
+			overflow-x: hidden;
+			padding-top:30px;
+		}
+ 
+		.sidenav button {
+			padding:6px 8px 6px 16px;
+			text-decoration: none;
+			font-size:25px;
+			display:block;
+		}
+ 
+		.sidenav button:hover{
+			color:#f1f1f1;
+		}	
+ 
+		.main{
+			margin-left:160px;
+			padding: 0px 10px;
+		}
+		.sidebar{
+			background-color: transparent;
+			border: none;
+			transition: transform 0.3s;
+			font-style: oblique;
+			width:172px; 
+			height: 14.5%;
+			
+			border-radius: 8px;
+		}
+		.sidebar:hover {
+			transform: translateY(-3px); /* Move the button up by 3 pixels */
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			border: solid;
+		  }
+
+		.sidebar:active {
+			transform: translateY(1px);
+			box-shadow: none;
+		}
+ 
+	</style>
+
+	
+
+	<div class="sidenav">
+		<a href="{% url 'adminfile.home' %}" style="text-decoration:none">
+			<button class= "sidebar" >Home</button>
+		</a>
+		<a href="{% url 'adminfile.master' %}" style="text-decoration:none">
+			<button class= "sidebar" >Master Schedule</button>
+		</a>
+		<a href="{% url 'adminfile.issues' %}" style="text-decoration:none">
+			<button class= "sidebar" href="#">Issues</button>
+		</a>
+		<a href="{% url 'adminfile.oldSchedule' %}" style="text-decoration:none">
+			<button class= "sidebar" href="#">Old Schedule</button>
+		</a>
+		<a href="{% url 'adminfile.accounts' %}" style="text-decoration:none">
+			<button class= "sidebar" href="#">Accounts</button>
+		</a>
+		<a href="{% url 'adminfile.map' %}" style="text-decoration:none">
+			<button class= "sidebar" href="#">Map</button>
+		</a>
+	</div> 

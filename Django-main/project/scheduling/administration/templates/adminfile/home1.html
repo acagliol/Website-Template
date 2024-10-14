@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<a href="{% url 'adminfile.test' %}">TEST</a>
+<div style="background-color: red; height:100%;">
+    {% for user in users %}
+        <h1>test</h1>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+

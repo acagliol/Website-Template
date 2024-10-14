@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<div>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            width: 150px;
+            text-align: center;
+        }
+          
+        .content-area {
+            z-index: 10;
+            position: relative; 
+        }
+    </style>
+
+    {% for department, schedule in schedules.items %}
+        <h2>{{ department }} department:</h2>
+        <table class="table table-bordered" style="width:100%; margin-bottom: 20px;">
+            <tr class="table-dark">
+                {% for header in schedule.0 %}
+                    <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+           
+            {% for row in schedule %}
+                {% if not forloop.first %} 
+                    <tr>
+                        {% for cell in row %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    {% endfor %}
+</div>
+
+
+{% endblock content %}

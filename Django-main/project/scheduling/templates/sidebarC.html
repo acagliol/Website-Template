@@ -1,0 +1,68 @@
+<head>
+	<style type="text/css">
+		.sidenav {
+			height: 100%;
+			width: 160px;
+			position: fixed;
+			z-index: 1;
+			top: 60px;
+			left: 0;
+			background-color: #5293E3;
+			overflow-x: hidden;
+			padding-top: 20px;
+		}
+
+		.sidenav button {
+			padding: 6px 8px 6px 16px;
+			text-decoration: none;
+			font-size: 25px;
+			display: block;
+		}
+
+		.sidenav button:hover {
+			color: #f1f1f1;
+		}
+
+		.active {
+			background-color: #2476DB;
+		}
+
+		.main {
+			margin-left: 160px;
+			padding: 0px 10px;
+		}
+
+		.sidebar {
+			background-color: #CCCCCC;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			width: 160px;
+
+		}
+	</style>
+</head>
+
+<body>
+	<div class="sidenav">
+		<a href="{% url 'counselorfile.home' %}" style="text-decoration:none">
+			<button class="sidebar">Home</button>
+		</a>
+		<a href="{% url 'counselorfile.master' %}" style="text-decoration:none">
+			<button class="sidebar">Master Schedule</button>
+		</a>
+		<a href="{% url 'counselorfile.issues' %}" style="text-decoration:none">
+			<button class="sidebar" href="#">Issues</button>
+		</a>
+		<a href="{% url 'counselorfile.classes' %}" style="text-decoration:none">
+			<button class="sidebar" href="#">Classes</button>
+		</a>
+		<a href="{% url 'counselorfile.accounts' %}" style="text-decoration:none">
+			<button class="sidebar" href="#">Accounts</button>
+		</a>
+		<a href="{% url 'counselorfile.pa' %}" style="text-decoration:none">
+			<button class="sidebar" href="#">PA</button>
+		</a>
+		<a href="{% url 'counselorfile.map' %}" style="text-decoration:none">
+			<button class="sidebar" href="#">Map</button>
+		</a>
+	</div>
+</body>

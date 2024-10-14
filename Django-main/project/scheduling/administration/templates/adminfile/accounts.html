@@ -1,0 +1,463 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+{% load static  %}
+<link rel="stylesheet" type="text/css" href={% static "styling.css" %}>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<style>
+  table.tb {
+    border-collapse: collapse;
+    width: 300px;
+  }
+
+  .tb th,
+  .tb td {
+    padding: 5px;
+    border: solid 1px #020000;
+  }
+
+  .tb th {
+    background-color: lightblue;
+  }
+</style>
+
+
+<style type="text/css">
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>
+
+<style type="text/css">
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>
+
+<script>
+  function findFunction() {
+
+    $('#searchbar').keyup(function () {
+         let value = $(this).val().toLowerCase();
+         $("#studenttable tr").filter(function () {
+            $(this).text()
+               .toLowerCase().indexOf(value) > -1 ? $(this).show() :
+               $(this).hide()
+         });
+         $('#studenttable tr:first').show();
+      });
+    $('#searchbar').keyup(function () {
+         let value = $(this).val().toLowerCase();
+         $("#teachertable tr").filter(function () {
+            $(this).text()
+               .toLowerCase().indexOf(value) > -1 ? $(this).show() :
+               $(this).hide()
+         });
+         $('#teachertable tr:first').show();
+      });  
+  }
+   
+
+  </script>
+
+
+<!--Students Button-->
+<input type="button" id="showTableA" value="Students" style="height:30px;width:calc(99%/2)">
+
+
+<!--Teachers Button-->
+<input type="button" id="showTableB" value="Teachers" style="height:30px; width:calc(100%/2)"> <!--SMALL-->
+<p>
+
+
+  <!--Search Bar-->
+  <input type="text" name="accountsearch" placeholder="Search.." style="position: absolute;  margin-top: 15px;" onkeyup="findFunction()" id = "searchbar">
+
+  
+  <!--Department Dropdown-->
+  <select name="Departmentdd" style="height: 30px; position: absolute; margin-left: 200px; margin-top: 15px;"
+    id="dropdowndep" onchange="DropdownFilterDep()">
+    <option value="0"  selected >Department</option>
+    <option value="CTE">CTE</option>
+    <option value="FINE ART">FINE ART</option>
+    <option value="IB">IB</option>
+    <option value="MATH">MATH</option>
+    <option value="SCI">SCI</option>
+    <option value="ENG">ENG</option>
+    <option value="Social Studies">Social Studies</option>
+    <option value="World Lang">World Lang</option>
+    <option value="ACC">ACC</option>
+    <option value="ATH">ATH</option>
+    <option value="SPED">SPED</option>
+  </select>
+
+  <!--Periods Dropdown-->
+  <select name="Periodsdd" style="height: 30px; position: absolute; margin-left: 332px; margin-top: 15px;"
+    id="dropdownper" onchange="DropdownFilterPd()">
+    <option value="0"  selected >Period</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+  </select>
+
+  <!--Grade Dropdown-->
+  <select name="Gradedd" style="height: 30px; position: absolute; margin-left: 200px; margin-top: 15px;"
+    id="dropdowngrade" onchange="DropdownFilterGrd()">
+    <option value="0"  selected >Grade</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+  </select>
+
+  <script>
+    function DropdownFilterGrd() {
+      var dropdown = document.getElementById("dropdowngrade");
+      var selectedValue = dropdown.value;
+      var table = document.getElementById("studenttable");
+      var rows = table.getElementsByTagName("tr");
+
+      for(var i=1;i<rows.length;i++) {
+        
+        var row=rows[i];
+        var grade = row.cells[3].textContent.trim();
+
+        if(selectedValue==="0" || grade===selectedValue) {
+          row.style.display="";
+        } else {
+          row.style.display="none";
+        }
+
+      }
+
+    }
+
+    function DropdownFilterDep() {
+      var dropdown = document.getElementById("dropdowndep");
+      var selectedValue = dropdown.value;
+      var table = document.getElementById("teachertable");
+      var rows = table.getElementsByTagName("tr");
+
+      for(var i=1;i<rows.length;i++) {
+        
+        var row=rows[i];
+        var department = row.cells[2].textContent.trim();
+
+        if(selectedValue==="0" || department===selectedValue) {
+          row.style.display="";
+        } else {
+          row.style.display="none";
+        }
+
+      }
+
+    }
+    function DropdownFilterPd() {
+      var dropdown = document.getElementById("dropdownper");
+      var selectedValue = dropdown.value;
+      var table = document.getElementById("teachertable");
+      var rows = table.getElementsByTagName("tr");
+
+      for(var i=1;i<rows.length;i++) {
+        
+        var row=rows[i];
+        var period = row.cells[3].textContent.trim();
+
+        if(selectedValue==="0" || period.indexOf(value)===selectedValue) {
+          row.style.display="";
+        } else {
+          row.style.display="none";
+        }
+      }
+    }
+  </script>
+
+  <!--Student Table-->
+<table style="position: relative; margin-top: 55px;  width:100%" id="studenttable">
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+  <tr style="background-color: grey;" id = "identifiers">
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>ID</th>
+    <th>Grade</th>
+
+  </tr>
+  <tr style="background-color: lightgrey;">
+    <td>Harrison</td>
+    <td>Jacob</td>
+    <td>894614</td>
+    <td>11</td>
+
+  </tr>
+  <tr style="background-color: white;">
+    <td>Davis</td>
+    <td>Michael</td>
+    <td>942067</td>
+    <td>11</td>
+
+  </tr>
+  <tr style="background-color: lightgrey;">
+    <td>Student 3</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr style="background-color: white;">
+    <td>Student 4</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr style="background-color: lightgrey;">
+    <td>Student 5</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr style="background-color: white;">
+    <td>Student 6</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr style="background-color: lightgrey;">
+    <td>Student 7</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+  <tr style="background-color: white;">
+    <td>Student 8</td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+  </tr>
+</table>
+</p>
+
+<!--Teachers Table-->
+<style>
+  table.tb {
+    border-collapse: collapse;
+    width: 300px;
+  }
+
+  .tb th,
+  .tb td {
+    padding: 5px;
+    border: solid 1px #777;
+  }
+
+  .tb th {
+    background-color: lightblue;
+  }
+</style>
+
+<p>
+<table style="position: relative; margin-top: 55px; width:100%" id="teachertable">
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+  <tr style="background-color: grey;">
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Department</th>
+    <th>Periods</th>
+
+
+  </tr>
+  <tr style="background-color: lightgrey;">
+    <td>Payne</td>
+    <td>Steven</td>
+    <td>CTE</td>
+    <td>1, 2, 3, 5, 6, 7</td>
+  </tr>
+  <tr style="background-color: white;">
+    <td>Hoover</td>
+    <td>Kiersta</td>
+    <td>FINE ART</td>
+    <td>1, 3, 4, 5, 6, 8</td>
+
+  </tr>
+  <tr style="background-color: lightgrey;">
+    <td>Farmer</td>
+    <td>Tate</td>
+    <td>SCI</td>
+    <td>1, 2, 3, 5, 6, 8</td>
+
+  </tr>
+  <tr style="background-color: white;">
+    <td>Diomande</td>
+    <td>Kasandra</td>
+    <td>ENG</td>
+    <td>2, 3, 4, 6, 8</td>
+
+  </tr>
+  <tr style="background-color: lightgrey;">
+    <td>Monroe</td>
+    <td>Jim</td>
+    <td>MATH</td>
+    <td>1, 2, 3, 4, 6, 7, 8</td>
+
+  </tr>
+  <tr style="background-color: white;">
+    <td>Mancuso</td>
+    <td>Anthony</td>
+    <td>Social Studies</td>
+    <td>2, 3, 4, 5, 6, 8</td>
+
+  </tr>
+  <tr style="background-color: lightgrey;">
+    <td>Kemp</td>
+    <td>Judith</td>
+    <td>World Lang</td>
+    <td>1, 3, 4, 5, 6, 8</td>
+
+  </tr>
+  <tr style="background-color: white;">
+    <td>Wells</td>
+    <td>Brooke</td>
+    <td>ATH</td>
+    <td>2, 3, 4, 6, 7, 8</td>
+
+  </tr>
+</table>
+</p>
+
+<!--hide prompts-->
+<style>
+  #studenttable {
+    display: none;
+  }
+
+  #teachertable {
+    display: none;
+  }
+
+  #dropdowndep {
+    display: none;
+  }
+
+  #dropdownper {
+    display: none;
+  }
+
+  #dropdowngrade {
+    display: none;
+  }
+
+  #searchbar {
+    display: none;
+  }
+</style>
+
+
+
+<!--tab switch and reset dropdown code-->
+<script>
+  var tableA = document.getElementById("studenttable");
+  var tableB = document.getElementById("teachertable");
+  var DropdownDep = document.getElementById("dropdowndep");
+  var DropdownPer = document.getElementById("dropdownper");
+  var DropdownGrd = document.getElementById("dropdowngrade");
+  var SearchBar = document.getElementById("searchbar")
+
+  var btnTabA = document.getElementById("showTableA");
+  var btnTabB = document.getElementById("showTableB");
+  // Student Tab
+  btnTabA.onclick = function () {
+    tableA.style.display = "table";
+    tableB.style.display = "none";
+    DropdownGrd.style.display = "block";
+    DropdownDep.style.display = "none";
+    DropdownPer.style.display = "none";
+    DropdownGrd.selectedIndex = 0;
+    SearchBar.style.display = "block";
+  } // Teacher Tab
+  btnTabB.onclick = function () {
+    tableA.style.display = "none";
+    tableB.style.display = "table";
+    DropdownDep.style.display = "block";
+    DropdownPer.style.display = "block";
+    DropdownGrd.style.display = "none";
+    DropdownDep.selectedIndex = 0;
+    DropdownPer.selectedIndex = 0;
+    SearchBar.style.display = "block";
+  }
+
+
+
+
+
+
+</script>
+
+
+
+<br />
+
+
+
+
+
+
+</body>
+
+{% endblock content %}

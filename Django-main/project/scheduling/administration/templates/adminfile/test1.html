@@ -1,0 +1,350 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<style>
+  .masterBody {
+    top: 80px;
+  }
+</style>
+
+<style>
+    .adminButtons {
+      display: inline-block;
+      width: 33%;
+      background-color: #CCCCCC;
+    }
+    
+    .editButton {
+      width: relative;
+      background-color: #ff2c1e;
+      margin-left: 10px;
+      margin-top: 10px;
+      font-size: 28px;
+      color: white; 
+      font-style: oblique; 
+      
+    }
+
+    .dropdown-menu {
+      border-radius: 0px;
+      
+      width: 50px;
+      background-color: white;
+    }
+</style>
+
+<style>
+  table, th, td {
+    border:1px solid black;
+    width: 10px;
+  }
+</style>  
+
+<style type ="text/css"> 
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>  
+
+<style type ="text/css"> 
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .teacherButton {
+    border: 0px;
+    background: transparent;
+  }
+ 
+
+
+  .popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+
+  
+  /* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+
+  </style>
+  <body class= "masterBody">
+    <button class = "adminButtons gx-0" onclick = "location.href='{% url "adminfile.master" %}'"> Schedule </button>
+    <button class = "adminButtons" onclick = "location.href='{% url "adminfile.masterTeachers" %}'" style="background-color:#9D9D9D;"> Teachers </button>
+    <button class = "adminButtons" onclick = "location.href='{% url "adminfile.classes" %}'"> Classes </button>
+
+    <button class = "editButton"> Add a Teacher </button>
+    
+    <a class="nav-link dropdown-toggle dropdownextra" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style= "margin-left: 20%; margin-top: -2.25%; height: 35px; width: 310px; font-size: 23px; color: black; font-style: oblique; background-color: #CCCCCC;">
+      Department
+    </a> 
+    <ul class="dropdown-menu" style = "width: 310px;">
+      <li class="dropdown-item">Math</li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">English</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" >Science</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" >Social Studies</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">World Languages</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Fine Arts</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Health/Physical Education</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">College Career and Leadership Development</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Career and Technical Education</a></li>
+    </ul>
+    
+    <a class="nav-link dropdown-toggle dropdownextra" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style= "margin-left: 40%; margin-top: -2.25%; height: 35px; font-size: 23px; color: black; font-style: oblique; background-color: #CCCCCC;">
+      Class
+    </a> 
+    <ul class="dropdown-menu" style = "">
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" >N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" >N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>  
+    </ul>
+    <div class="search-container" style="margin-left: 75%; margin-top:-2.5%;">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search Class..." name="search" style="width: 333px; height: 35px;">
+        <button type="submit" style= "width: 65px; height: 30px;"><i class="fa fa-search">Submit</i></button>
+      </form>
+    </div>
+  <p>
+    
+    
+    <script>
+    // When the user clicks on div, open the popup
+    function myFunction() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+    </script>
+    <table style="width:100%; top:">
+      <tr style="background-color: grey;">
+        <th><div class="popup" onclick="myFunction()">Teacher X
+            <span class="popuptext" id="myPopup"> Qualifications:  Number of classes:
+            </span>
+            </div></th>
+        <th>1st Period</th>
+        <th>2nd Period</th>
+        <th>3rd Period</th>
+        <th>4th Period</th>
+        <th>5th Period</th>
+        <th>6th Period</th>
+        <th>7th Period</th>
+        <th>8th Period</th>
+      </tr>
+      <tr style="background-color: lightgrey;">
+        <td><div class="popup" onclick="myFunction()">Teacher X
+            <span class="popuptext" id="myPopup"> Qualifications:  Number of classes:
+            </span>
+            </div></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr style="background-color: white;">
+        <td><div class="popup" onclick="myFunction()">Teacher X
+            <span class="popuptext" id="myPopup"> Qualifications:  Number of classes:
+            </span>
+            </div></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr style="background-color: lightgrey;">
+        <td><div class="popup" onclick="myFunction()">Teacher X
+            <span class="popuptext" id="myPopup"> Qualifications:  Number of classes:
+            </span>
+            </div></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr style="background-color: white;">
+        <td><div class="popup" onclick="myFunction()">Teacher X
+            <span class="popuptext" id="myPopup"> Qualifications:  Number of classes:
+            </span>
+            </div></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr style="background-color: lightgrey;">
+        <td><div class="popup" onclick="myFunction()">Teacher X
+            <span class="popuptext" id="myPopup"> Qualifications:  Number of classes:
+            </span>
+            </div></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr style="background-color: white;">
+        <td><div class="popup" onclick="myFunction()">Teacher X
+            <span class="popuptext" id="myPopup"> Qualifications:  Number of classes:
+            </span>
+            </div></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr style="background-color: lightgrey;">
+        <td><div class="popup" onclick="myFunction()">Teacher X
+            <span class="popuptext" id="myPopup"> Qualifications:  Number of classes:
+            </span>
+            </div></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr style="background-color: white;">
+        <td><div class="popup" onclick="myFunction()">Teacher X
+            <span class="popuptext" id="myPopup"> Qualifications:  Number of classes:
+            </span>
+            </div></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </p>
+  
+
+</body>
+
+{% endblock content %}

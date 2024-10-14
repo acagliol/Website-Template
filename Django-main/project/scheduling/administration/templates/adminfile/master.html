@@ -1,0 +1,367 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href={% static "styling.css" %}>
+<style>
+  .masterBody {
+    top: 80px;
+    
+  }
+</style>
+
+<style>
+    .adminButtons {
+      width: 32%;
+      background-color: #5293e3; /* blue background */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition-duration: 0.4s;
+    
+    }
+    
+    .adminButtons:hover {
+      background-color: #ff2c1e; /* Darker green on hover */
+      color: black;
+  }
+
+
+    .editButton {
+      width: 130px;
+      margin-left: 10px;
+      margin-top: 10px;
+      font-size: 28px;
+      color: white; 
+      font-style: oblique; 
+      border-radius: 20px; /* Adjust this value to make the button more round */
+      padding: 10px 20px;
+      z-index: 1;
+      background-color: red; /* Initial background color */
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.4s;
+    }
+
+    .editButton:hover {
+      color: black;
+      background-color: #5293e3; /* New background color on hover */
+    }
+
+    .dropdown-menu {
+      border-radius: 0px;
+      
+      width: 50px;
+      background-color: white;
+    }
+
+    .dropdown-Item {
+      margin-left: 5px;
+      
+    }
+
+    .dropdown-Item:hover {
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      width: 60%;
+    }
+    
+
+  table, th, td {
+    border:1px solid black;
+    width: 10px;
+  }
+</style>  
+
+<style type ="text/css"> 
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>  
+
+<style type ="text/css"> 
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+
+  
+  </style>
+
+  
+
+  <script>
+    function findFunction() {
+  
+      $('#searchBar').keyup(function () {
+           let value = $(this).val().toLowerCase();
+           $("#masterSchedule tr").filter(function () {
+              $(this).text()
+                 .toLowerCase().indexOf(value) > -1 ? $(this).show() :
+                 $(this).hide()
+           });
+           $('#masterSchedule tr:first').show();
+        });
+     
+    }
+     
+    function DropdownFilterPeriod(x) {
+      
+      var dropdown = document.getElementById("dropdowndep");
+      var output = "<table><th>Teacher</th>"
+      var selectedValue = x;
+      
+      var table = document.getElementById("masterSchedule");
+
+     /* var element = document.getElementById('yourId');
+      var periodNumber = Number(element.id); // assigns: 'yourId'
+      
+
+      for(var i=1;i<rows.length;i++) {
+        
+        var row=rows[];
+        var department = row.cells[periodNumber].textContent.trim();
+
+        if(selectedValue==="0" || department===element) {
+          row.style.display="";
+        } else {
+          row.style.display="none";
+        }
+
+      }*/
+      if (x == 0) {
+        output += "<th>" + selectedValue + " period</th>"
+      } else if (x == 1) {
+        output += "<th>" + selectedValue + "st period</th>"
+      }  else if (x == 2 ) {
+        output += "<th>" + selectedValue + "nd period</th>"
+      } else if (x == 3) {
+        output += "<th>" + selectedValue + "rd period</th>"
+      } else {
+        output += "<th>" + selectedValue + "th period</th>"
+      }
+      output += "</table>"
+      
+      table.innerHTML = output
+    }
+    </script>
+
+
+
+
+  <body class= "masterBody">
+    <button class = "adminButtons" onclick = "location.href='{% url "adminfile.master" %}'" style="background-color: #9D9D9D;"> Schedule </button>
+    <button class = "adminButtons" onclick = "location.href='{% url "adminfile.masterTeachers" %}'"> Teachers </button>
+    <button class = "adminButtons" onclick = "location.href='{% url "adminfile.classes" %}'"> Classes </button>
+
+    <button class = "editButton"> Edit </button>
+
+
+    <a class="nav-link dropdown-toggle dropdownextra" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style= "margin-left: 14%; margin-top: -2.25%; height: 35px; width: 310px; font-size: 23px; color: black; font-style: oblique; background-color: #CCCCCC;">
+      Department
+    </a> 
+    <ul class="dropdown-menu" style = "width: 310px;">
+      <li class="dropdown-Item">All Classes</li>
+      <li><hr class="dropdown-divider"></li>
+      <li class="dropdown-Item">Math</li>
+      <li><hr class="dropdown-divider"></li>
+      <li class="dropdown-Item" >English</li>
+      <li><hr class="dropdown-divider"></li>
+      <li class="dropdown-Item"  >Science</li>
+      <li><hr class="dropdown-divider"></li>
+      <li class="dropdown-Item"  >Social Studies</li>
+      <li><hr class="dropdown-divider"></li>
+      <li class="dropdown-Item" >World Languages</li>
+      <li><hr class="dropdown-divider"></li>
+      <li class="dropdown-Item" >Fine Arts</li>
+      <li><hr class="dropdown-divider"></li>
+      <li class="dropdown-Item" >Health/Physical Education</li>
+      <li><hr class="dropdown-divider"></li>
+      <li class="dropdown-Item" >College Career and Leadership Development</li>
+      <li><hr class="dropdown-divider"></li>
+      <li class="dropdown-Item" >Career and Technical Education</li>
+    </ul>
+
+    {% comment %} <div style="width: 100px; height: 50px; background-color: white;">
+      <form action="/" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value='Submit'>
+      </form>
+    </div> {% endcomment %}
+    <form method="get">
+      <a class="nav-link dropdown-toggle dropdownextra" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style= "margin-left: 34%; margin-top: -2.25%; height: 35px; font-size: 23px; color: black; font-style: oblique; background-color: #CCCCCC;">
+        Period
+      </a> 
+  
+      <ul class="dropdown-menu" style = "">
+        <li class="dropdown-Item"><input type="checkbox" name="sort" value="all" id="sort_all">
+          <label for="sort_ascending">All Classes</label>
+      </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-Item"><input type="checkbox" name="sort" value="zero" id="sort_0Period">
+          <label for="sort_ascending">0 period</label>
+      </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-Item"><input type="checkbox" name="sort" value="1st" id="sort_1stPeriod">
+          <label for="sort_ascending">1st period</label>
+      </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-Item"><input type="checkbox" name="sort" value="2nd" id="sort_2ndPeriod">
+          <label for="sort_ascending">2nd period</label>
+      </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-Item"><input type="checkbox" name="sort" value="3rd" id="sort_3rdPeriod">
+          <label for="sort_ascending">3rd period</label>
+      </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-Item"><input type="checkbox" name="sort" value="4th" id="sort_4thPeriod">
+          <label for="sort_ascending">4th period</label>
+      </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-Item"><input type="checkbox" name="sort" value="5th" id="sort_5thPeriod">
+          <label for="sort_ascending">5th period</label>
+      </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-Item"><input type="checkbox" name="sort" value="6th" id="sort_6thPeriod">
+          <label for="sort_ascending">6th period</label>
+      </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-Item"><input type="checkbox" name="sort" value="7th" id="sort_7thPeriod">
+          <label for="sort_ascending">7th period</label>
+      </li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-Item"><input type="checkbox" name="sort" value="8th" id="sort_8thPeriod">
+          <label for="sort_ascending">8th period</label>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      <input type="submit" value="Sort" style="width: 96%; margin-left:2%; background:transparent; border:transparent; ">
+      </ul>
+      
+    </form>
+    <a class="nav-link dropdown-toggle dropdownextra" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style= "margin-left: 48%; margin-top: -2.25%; height: 35px; font-size: 23px; color: black; font-style: oblique; background-color: #CCCCCC;">
+      Teacher
+    </a> 
+    <ul class="dropdown-menu" style = "">
+      <li><a class="dropdown-item" href="#">All Teachers</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" >N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" >N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">N/A</a></li>  
+    </ul>
+
+    <div class="search-container" style="margin-left: 75%; margin-top:-2.5%;">
+      <form action="/action_page.php">
+        <input type="text" placeholder="Search Classes..." name="search" style="width: 333px; height: 35px;" id="searchBar" onkeyup="findFunction()">
+        <button type="submit" style="position: fixed; width: 65px; height: 30px; margin-top: 3px; margin-left: 3px; background: white; background-position: center; background-repeat: no-repeat;  background-image: url('{% static "searchImage2.png" %}');"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+
+    
+  <p>
+    
+    <table style="width:100%; margin-left: .4%;" id="masterSchedule">
+      <tr style="background-color: grey;">
+        <th>Teacher X</th>
+        <th>0 period</th>
+        <th>1st Period</th>
+        <th>2nd Period</th>
+        <th>3rd Period</th>
+        <th>4th Period</th>
+        <th>5th Period</th>
+        <th>6th Period</th>
+        <th>7th Period</th>
+        <th>8th Period</th>
+      </tr>
+    
+      {% for item in teacher %}
+
+      {% if item|divisibleby:2 %}
+      <tr style="background-color: white;">  
+      
+      {% else %}  
+      <tr style="background-color: lightgrey;">
+      {% endif %}
+      {% for num in n %}
+      {% if num == 0 %}
+      <td>
+        <div class="popup" onclick="myFunction()">
+          Teacher {{item}}
+        </div>
+      </td>
+        {% else %}
+        <td>
+            <div class="popup" onclick="myFunction()">Class {{item}}<div>
+        </td>
+        {% endif %}
+      {% endfor %}
+       
+          
+      </tr>
+
+    {% endfor %}
+  </p>
+  
+
+</body>
+
+{% endblock content %}

@@ -1,0 +1,77 @@
+
+
+<style>
+  img {
+    width: 117px;
+    height: 80px;
+  }
+  .custom-drop {
+    list-style: none;
+    background-color: white;
+
+  }
+  
+  .dropdown-menu {
+    border-radius: 0px;
+    width: 50px;
+    background-color: white;
+    margin-right: 90%;
+  }
+  
+  .dropdown-item{
+    text-align: center; 
+    font-size: 15px; 
+    border-radius: 1px;
+    font-style: oblique; 
+    width: 100px;
+  }
+
+  .dropdownextra{
+    background-color: #FF2C1E; 
+    width: 180px;
+    height: 50px; 
+    text-align: center; 
+    font-size: 24px; 
+    color: white; 
+    font-style: oblique; 
+    outline-style: solid; 
+    outline-color: black;
+    position: absolute; 
+    left: 5%;
+  }
+
+  
+</style>
+
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style= "z-index: 2; background-color:#5293E3; height: 80px; margin: 0; position: fixed; width: 100%;">
+    <div class="container-fluid" style= "background-color: #5293E3; background-image: url('{% static "adminBackground.jpg" %}');">
+      <img src="{% static 'lion_transparent.png' %}" alt="My image" style="zoom: 80%; ">
+      <h1 class="navbar-brand" style="font-size:51px; color: white; font-style: oblique; text-shadow: 2px 2px 0px #003158; "href="#">Leander High School </h1>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" style= "font-size: 28px; color: white; font-style: oblique; background-color: transparent; text-shadow: 2px 2px 0px #003158;" href="#">{{role}}</a>
+          </li>
+          <!-- dropdown  -->
+          <li class="nav-item dropdown" style="position: absolute; left:87%;">
+            <!-- dropdown main view -->
+            <a class="nav-link dropdown-toggle dropdownextra" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style= "margin-left: 50%;">
+              {{name}}
+            </a>
+            <!--  -->
+            <ul class="dropdown-menu" style = "margin-top:55px; margin-left: 90%;">
+              <li><a class="dropdown-item" href="#" >Change Password</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#" >Get Admin Code</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

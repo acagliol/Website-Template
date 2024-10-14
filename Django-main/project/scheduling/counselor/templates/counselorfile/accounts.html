@@ -1,0 +1,2223 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+
+
+<style>
+    table.tb {
+        border-collapse: collapse;
+        width: 300px;
+    }
+
+    .tb th,
+    .tb td {
+        padding: 5px;
+        border: solid 1px #020000;
+    }
+
+    .tb th {
+        background-color: lightblue;
+    }
+</style>
+
+<style type="text/css">
+    tr {
+        background-color: lightgrey;
+    }
+</style>
+
+
+
+<style type="text/css">
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+
+<style type="text/css">
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+
+
+
+<script>
+    function findFunction() {
+
+        $('#searchbar').keyup(function () {
+            let value = $(this).val().toLowerCase();
+            $("#studenttable tr").filter(function () {
+                $(this).text()
+                    .toLowerCase().indexOf(value) > -1 ? $(this).show() :
+                    $(this).hide()
+            });
+            $('#studenttable tr:first').show();
+        });
+        $('#searchbar').keyup(function () {
+            let value = $(this).val().toLowerCase();
+            $("#teachertable tr").filter(function () {
+                $(this).text()
+                    .toLowerCase().indexOf(value) > -1 ? $(this).show() :
+                    $(this).hide()
+            });
+            $('#teachertable tr:first').show();
+        });
+    }
+
+
+</script>
+
+<!--Students Button-->
+<input type="button" id="showTableA" value="Students" style="height:30px;width:calc(99%/2)">
+
+
+<!--Teachers Button-->
+<input type="button" id="showTableB" value="Teachers" style="height:30px; width:calc(100%/2)"> <!--SMALL-->
+<p>
+
+
+    <!--Search Bar-->
+    <input type="text" name="accountsearch" placeholder="Search.." style="position: absolute;  margin-top: 15px;"
+        onkeyup="findFunction()" id="searchbar">
+
+    <input type="button" id="searchbutton" value="Enter"
+        style="height: 30px; position: absolute; margin-left: 200px; margin-top: 15px;">
+
+
+    <!--Department Dropdown-->
+    <select name="Departmentdd" style="height: 30px; position: absolute; margin-left: 265px; margin-top: 15px;"
+        id="dropdowndep">
+        <option value="0" disabled selected hidden>Department</option>
+        <option value="CTE">CTE</option>
+        <option value="Fine Arts">Fine Arts</option>
+        <option value="IB">IB</option>
+        <option value="Math">Math</option>
+    </select>
+
+    <!--Periods Dropdown-->
+    <select name="Periodsdd" style="height: 30px; position: absolute; margin-left: 385px; margin-top: 15px;"
+        id="dropdownper">
+        <option value="0" disabled selected hidden>Period</option>
+        <option value="p1">1</option>
+        <option value="p2">2</option>
+        <option value="p3">3</option>
+        <option value="p4">4</option>
+        <option value="p5">5</option>
+        <option value="p6">6</option>
+        <option value="p7">7</option>
+        <option value="p8">8</option>
+    </select>
+
+    <!--Grade Dropdown-->
+    <select name="Gradedd" style="height: 30px; position: absolute; margin-left: 265px; margin-top: 15px;"
+        id="dropdowngrade">
+        <option value="0" disabled selected hidden>Grade</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+    </select>
+
+    <!--Student Table-->
+<table style="position: relative; margin-top: 55px;  width:100%" id="studenttable">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <tr style="background-color: grey;">
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>ID</th>
+        <th>Grade</th>
+    </tr>
+    <!-- aqui-->
+
+    <tr>
+        <td>WilsonRossi</td>
+        <td>Isabella</td>
+        <td>800727</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>Ximena/Jimena</td>
+        <td>801649</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Mariana</td>
+        <td>802317</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>James</td>
+        <td>802410</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Joseph</td>
+        <td>804253</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>David</td>
+        <td>805098</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Michael</td>
+        <td>805546</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Martina</td>
+        <td>805703</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Martina</td>
+        <td>806473</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Romano</td>
+        <td>Daniela</td>
+        <td>808280</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>Daniela</td>
+        <td>808630</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Ferrari</td>
+        <td>Daniel</td>
+        <td>809394</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Ximena/Jimena</td>
+        <td>810584</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Greco</td>
+        <td>Valeria</td>
+        <td>811091</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>John</td>
+        <td>812648</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Emma</td>
+        <td>816471</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>Samantha</td>
+        <td>817052</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>Daniela</td>
+        <td>817137</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Williams</td>
+        <td>Valentina</td>
+        <td>817803</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>James</td>
+        <td>819675</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Valeria</td>
+        <td>821045</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>WilsonRossi</td>
+        <td>Mariana</td>
+        <td>822097</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Ferrari</td>
+        <td>James</td>
+        <td>822896</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>Ximena/Jimena</td>
+        <td>824593</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Mariana</td>
+        <td>825802</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>Ximena/Jimena</td>
+        <td>827240</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Sara</td>
+        <td>829201</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>WilsonRossi</td>
+        <td>Emma</td>
+        <td>829275</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Ricci</td>
+        <td>Martina</td>
+        <td>829394</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Williams</td>
+        <td>Valentina</td>
+        <td>829533</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Ryan</td>
+        <td>830956</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>Lucia</td>
+        <td>833173</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>David</td>
+        <td>834058</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Maria Jos�</td>
+        <td>834080</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Williams</td>
+        <td>Victoria</td>
+        <td>837202</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Maria Jos�</td>
+        <td>837607</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>Michael</td>
+        <td>841436</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Emma</td>
+        <td>841470</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>John</td>
+        <td>842379</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Daniela</td>
+        <td>842654</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>David</td>
+        <td>846289</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>WilsonRossi</td>
+        <td>Michael</td>
+        <td>848059</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Romano</td>
+        <td>Samantha</td>
+        <td>848106</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Camila</td>
+        <td>850331</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Esposito</td>
+        <td>Sara</td>
+        <td>851472</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>Luciana</td>
+        <td>853158</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>John</td>
+        <td>854631</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Luciana</td>
+        <td>855712</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>Isabella</td>
+        <td>856399</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>Ryan</td>
+        <td>857886</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>John</td>
+        <td>858126</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Valeria</td>
+        <td>858495</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>WilsonRossi</td>
+        <td>Camila</td>
+        <td>858546</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Samantha</td>
+        <td>859117</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Samantha</td>
+        <td>859358</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Mariana</td>
+        <td>860162</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Joseph</td>
+        <td>863018</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Christopher</td>
+        <td>863990</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>Emma</td>
+        <td>864753</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Romano</td>
+        <td>Daniela</td>
+        <td>865765</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Valeria</td>
+        <td>866570</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Davis</td>
+        <td>Ryan</td>
+        <td>866944</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Christopher</td>
+        <td>866999</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Valeria</td>
+        <td>868710</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>Mariana</td>
+        <td>869270</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Williams</td>
+        <td>Isabella</td>
+        <td>869766</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Victoria</td>
+        <td>873167</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Valeria</td>
+        <td>873318</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>Sara</td>
+        <td>873581</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>Ryan</td>
+        <td>873719</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Emma</td>
+        <td>875544</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Ricci</td>
+        <td>Lucia</td>
+        <td>875551</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>Andrew</td>
+        <td>876603</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Sara</td>
+        <td>877392</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Matthew</td>
+        <td>879301</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Sara</td>
+        <td>882332</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Sofia</td>
+        <td>883337</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>Matthew</td>
+        <td>883757</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Joseph</td>
+        <td>886990</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Mariana</td>
+        <td>888031</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>Daniel</td>
+        <td>888088</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Sofia</td>
+        <td>888385</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Isabella</td>
+        <td>892801</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>Luciana</td>
+        <td>895718</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Valentina</td>
+        <td>896624</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Greco</td>
+        <td>James</td>
+        <td>896911</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>WilsonRossi</td>
+        <td>James</td>
+        <td>900750</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Davis</td>
+        <td>Emma</td>
+        <td>900911</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>David</td>
+        <td>901223</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>Samantha</td>
+        <td>902527</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>Luciana</td>
+        <td>903801</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Samantha</td>
+        <td>904104</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>Mariana</td>
+        <td>909865</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Isabella</td>
+        <td>910296</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Sofia</td>
+        <td>911294</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Esposito</td>
+        <td>James</td>
+        <td>911941</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Martina</td>
+        <td>913087</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Isabella</td>
+        <td>913153</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Matthew</td>
+        <td>914538</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Maria Jos�</td>
+        <td>914827</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Greco</td>
+        <td>Daniel</td>
+        <td>914975</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Daniela</td>
+        <td>916105</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Romano</td>
+        <td>Isabella</td>
+        <td>916887</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>Camila</td>
+        <td>916960</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>David</td>
+        <td>917203</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>WilsonRossi</td>
+        <td>John</td>
+        <td>917858</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Esposito</td>
+        <td>James</td>
+        <td>918007</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Martina</td>
+        <td>918092</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Romano</td>
+        <td>Ryan</td>
+        <td>918419</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Andrew</td>
+        <td>918968</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>John</td>
+        <td>919249</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Sofia</td>
+        <td>919678</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Valentina</td>
+        <td>919881</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Michael</td>
+        <td>920588</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Luciana</td>
+        <td>920870</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>WilsonRossi</td>
+        <td>Daniela</td>
+        <td>921728</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Michael</td>
+        <td>923915</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>Sara</td>
+        <td>924471</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Lucia</td>
+        <td>924531</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Ferrari</td>
+        <td>Joseph</td>
+        <td>925871</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>Emma</td>
+        <td>926281</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Daniel</td>
+        <td>927417</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Maria Jos�</td>
+        <td>928315</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Emma</td>
+        <td>929288</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Victoria</td>
+        <td>929335</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>Samantha</td>
+        <td>929436</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>David</td>
+        <td>929604</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Lucia</td>
+        <td>929650</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Andrew</td>
+        <td>930138</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Greco</td>
+        <td>Emma</td>
+        <td>930702</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>Ximena/Jimena</td>
+        <td>931717</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Lucia</td>
+        <td>932433</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Davis</td>
+        <td>John</td>
+        <td>932993</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Valeria</td>
+        <td>933450</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Davis</td>
+        <td>Sara</td>
+        <td>933619</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>WilsonRossi</td>
+        <td>Maria Jos�</td>
+        <td>933965</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Christopher</td>
+        <td>935504</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Esposito</td>
+        <td>Joseph</td>
+        <td>936203</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Davis</td>
+        <td>Camila</td>
+        <td>939259</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Ricci</td>
+        <td>Andrew</td>
+        <td>939910</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>Lucia</td>
+        <td>940644</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>James</td>
+        <td>940695</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>Camila</td>
+        <td>941979</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>James</td>
+        <td>943056</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Ricci</td>
+        <td>Valentina</td>
+        <td>943303</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>Samantha</td>
+        <td>945722</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Greco</td>
+        <td>Sofia</td>
+        <td>945849</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Davis</td>
+        <td>Camila</td>
+        <td>946283</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>John</td>
+        <td>947406</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Daniela</td>
+        <td>948604</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Camila</td>
+        <td>950036</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Emma</td>
+        <td>951181</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Ximena/Jimena</td>
+        <td>951487</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Romano</td>
+        <td>Sara</td>
+        <td>951555</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>Daniela</td>
+        <td>953123</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>Martina</td>
+        <td>953905</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Isabella</td>
+        <td>954086</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>Emma</td>
+        <td>955354</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Maria Jos�</td>
+        <td>956281</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Esposito</td>
+        <td>Maria Jos�</td>
+        <td>957280</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Ricci</td>
+        <td>Christopher</td>
+        <td>957395</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Mariana</td>
+        <td>957582</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Ximena/Jimena</td>
+        <td>958349</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Camila</td>
+        <td>959591</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Romano</td>
+        <td>Victoria</td>
+        <td>959604</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Valentina</td>
+        <td>960203</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>Michael</td>
+        <td>963233</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Valentina</td>
+        <td>963365</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Ricci</td>
+        <td>Victoria</td>
+        <td>964092</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Daniela</td>
+        <td>967714</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Ferrari</td>
+        <td>Sofia</td>
+        <td>967740</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Williams</td>
+        <td>Ximena/Jimena</td>
+        <td>968013</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Colombo</td>
+        <td>Isabella</td>
+        <td>968024</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Davis</td>
+        <td>Mariana</td>
+        <td>969199</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Ryan</td>
+        <td>969846</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Ximena/Jimena</td>
+        <td>970332</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Marino</td>
+        <td>Camila</td>
+        <td>970474</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Williams</td>
+        <td>Daniel</td>
+        <td>970749</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Davis</td>
+        <td>Mariana</td>
+        <td>972598</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Ferrari</td>
+        <td>Valeria</td>
+        <td>972710</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Bianchi</td>
+        <td>Ryan</td>
+        <td>973593</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Williams</td>
+        <td>Michael</td>
+        <td>974032</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Garcia</td>
+        <td>Isabella</td>
+        <td>974933</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Miller</td>
+        <td>Ryan</td>
+        <td>976425</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Lucia</td>
+        <td>977785</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Romano</td>
+        <td>David</td>
+        <td>977908</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Williams</td>
+        <td>Lucia</td>
+        <td>978957</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Camila</td>
+        <td>980189</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Romano</td>
+        <td>Emma</td>
+        <td>981514</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Jones</td>
+        <td>Martina</td>
+        <td>981607</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Russo</td>
+        <td>Daniel</td>
+        <td>982715</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Davis</td>
+        <td>Sara</td>
+        <td>983976</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Rodriguez</td>
+        <td>Emma</td>
+        <td>985327</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>James</td>
+        <td>985855</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Brown</td>
+        <td>Emma</td>
+        <td>986248</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>John</td>
+        <td>989150</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Johnson</td>
+        <td>Samantha</td>
+        <td>990980</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Davis</td>
+        <td>Christopher</td>
+        <td>992402</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Ferrari</td>
+        <td>Joseph</td>
+        <td>995740</td>
+        <td>11</td>
+    </tr>
+    <tr>
+        <td>Ricci</td>
+        <td>Sofia</td>
+        <td>998585</td>
+        <td>11</td>
+    </tr>
+
+</table>
+</p>
+
+<!--Teachers Table-->
+<style>
+    table.tb {
+        border-collapse: collapse;
+        width: 300px;
+    }
+
+    .tb th,
+    .tb td {
+        padding: 5px;
+        border: solid 1px #777;
+    }
+
+    .tb th {
+        background-color: lightblue;
+    }
+</style>
+
+<p>
+
+<table style="position: relative; margin-top: 55px; width:100%" id="teachertable">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <tr style="background-color: grey;">
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Department</th>
+        <!-- table goes in below the tr-->
+    </tr>
+    <tr>
+        <td>RYAN</td>
+        <td>NELSON</td>
+        <td>ACC</td>
+    </tr>
+    <tr>
+        <td>JENN</td>
+        <td>ATKINSON</td>
+        <td>ATH</td>
+    </tr>
+    <tr>
+        <td>CLINT</td>
+        <td>BRADLEY</td>
+        <td>ATH</td>
+    </tr>
+    <tr>
+        <td>KENDALL</td>
+        <td>DRIVER</td>
+        <td>ATH/CTE</td>
+    </tr>
+    <tr>
+        <td>MATHEW</td>
+        <td>GRISSOM</td>
+        <td>ATH/CTE</td>
+    </tr>
+    <tr>
+        <td>AERIN</td>
+        <td>HENDERSON</td>
+        <td>ATH/CTE</td>
+    </tr>
+    <tr>
+        <td>LASARO</td>
+        <td>LUMBERAS</td>
+        <td>ATH/CTE</td>
+    </tr>
+    <tr>
+        <td>JORGE</td>
+        <td>MARTINEZ</td>
+        <td>ATH/CTE</td>
+    </tr>
+    <tr>
+        <td>KRIS</td>
+        <td>PRICE</td>
+        <td>ATH</td>
+    </tr>
+    <tr>
+        <td>KENZIE</td>
+        <td>REEDER</td>
+        <td>ATH/CTE</td>
+    </tr>
+    <tr>
+        <td>MICHAELA</td>
+        <td>SETTLEMEYER</td>
+        <td>ATH/CTE</td>
+    </tr>
+    <tr>
+        <td>BROOKE</td>
+        <td>WELLS</td>
+        <td>ATH</td>
+    </tr>
+    <tr>
+        <td>LINDSIE</td>
+        <td>ALLEY</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>ASHLEY</td>
+        <td>ATKINSON</td>
+        <td>CTE/ATH</td>
+    </tr>
+    <tr>
+        <td>KARL</td>
+        <td>BIELFELDT</td>
+        <td>CTE/ATH</td>
+    </tr>
+    <tr>
+        <td>JIM</td>
+        <td>DIRKES</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>SHEANNA</td>
+        <td>DUDLEY</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>MAIKEL</td>
+        <td>GARCIA</td>
+        <td>CTE/SCI</td>
+    </tr>
+    <tr>
+        <td>LINDSEY</td>
+        <td>GENZ</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>ALEXUS</td>
+        <td>GUERRA</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>AMBER</td>
+        <td>HALL</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>GIGI</td>
+        <td>HEERMANS</td>
+        <td>CTE/ATH</td>
+    </tr>
+    <tr>
+        <td>BRITTANY</td>
+        <td>HEFNER</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>TROY</td>
+        <td>HESTER</td>
+        <td>CTE/ATH</td>
+    </tr>
+    <tr>
+        <td>DAYNA</td>
+        <td>HUNTER</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>JEFF</td>
+        <td>KELLEY</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>KARI</td>
+        <td>KIMBALL</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>DENIEL</td>
+        <td>LOPEZ</td>
+        <td>CTE/ATH</td>
+    </tr>
+    <tr>
+        <td>JIM</td>
+        <td>MARTIN</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>KELI</td>
+        <td>MCCABE</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>JEFFRY</td>
+        <td>MOFFITT</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>STEVEN</td>
+        <td>PAYNE</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>GEORGE</td>
+        <td>REYES</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>BIANCA</td>
+        <td>ROCHA</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>BRADY</td>
+        <td>SPENCER</td>
+        <td>CTE/ATH</td>
+    </tr>
+    <tr>
+        <td>SARAH</td>
+        <td>SPINELLI</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>EMILY</td>
+        <td>VERRA</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>HERB</td>
+        <td>WASSON</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>LAWRENCE</td>
+        <td>WESLEY</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>RONNY</td>
+        <td>WILLIAMS</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>JENN</td>
+        <td>DORGAN</td>
+        <td>MATH/ATH</td>
+    </tr>
+    <tr>
+        <td>JEREMY</td>
+        <td>EDWARDS</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>ROBERT</td>
+        <td>ESQUIVEL</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>CARL</td>
+        <td>FRAMMOLINO</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>TAYLOR</td>
+        <td>HALL</td>
+        <td>MATH/ATH</td>
+    </tr>
+    <tr>
+        <td>HUMBERTO</td>
+        <td>LAUREL</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>SUZY</td>
+        <td>MACHONEY</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>MARIA</td>
+        <td>MOLINA</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>JIM</td>
+        <td>MONROE</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>SHAWNA</td>
+        <td>QUEEN</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>EMILE</td>
+        <td>SCANLON</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>SAM</td>
+        <td>SOMMER</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>KATHERINE</td>
+        <td>SCOMMERVILLE</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>TRACY</td>
+        <td>STEPHENS</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>ELIZABETH</td>
+        <td>TEKPOR</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>NGHA</td>
+        <td>TRAN</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>GEORGE</td>
+        <td>SALVO</td>
+        <td>MATH</td>
+    </tr>
+    <tr>
+        <td>MARY</td>
+        <td>BISHOP</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>SHELBY</td>
+        <td>BRADENBURG</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>JOHN</td>
+        <td>DUFFY</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>ELEAZAR</td>
+        <td>JUDE DELOS SANTOS</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>TATE</td>
+        <td>FARMER</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>DEBORAH</td>
+        <td>GERMANY</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>CARICE</td>
+        <td>GRIGGS</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>MATHEW</td>
+        <td>KOSTOFF</td>
+        <td>ATH/SCI</td>
+    </tr>
+    <tr>
+        <td>ALEX</td>
+        <td>LINDEN</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>JEFFREY</td>
+        <td>MADDOX</td>
+        <td>ATH/SCI</td>
+    </tr>
+    <tr>
+        <td>ALEX</td>
+        <td>MOULTON</td>
+        <td>ATH/SCI</td>
+    </tr>
+    <tr>
+        <td>TINA</td>
+        <td>PAYNE</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>JENNIFER</td>
+        <td>PRATT</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>KELLY</td>
+        <td>STEPHENS</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>STEPHANIE</td>
+        <td>VILLAREAL</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>BEVERLY</td>
+        <td>WILHELM</td>
+        <td>SCI</td>
+    </tr>
+    <tr>
+        <td>LAWRENCE</td>
+        <td>ALEXANDER</td>
+        <td>ATH/SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>RYAN</td>
+        <td>BAILEY</td>
+        <td>ATH/SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>CARA</td>
+        <td>BIELFIELDT</td>
+        <td>SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>AIME</td>
+        <td>BONIN</td>
+        <td>SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>GRANT</td>
+        <td>BRITTON</td>
+        <td>ATH/SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>DEVIN</td>
+        <td>EATMON</td>
+        <td>SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>ALIC</td>
+        <td>FLORES</td>
+        <td>ATH/SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>RUSS</td>
+        <td>GIRARD</td>
+        <td>ATH/SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>KATE</td>
+        <td>HAUENSTEIN</td>
+        <td>SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>RYAN</td>
+        <td>KNG</td>
+        <td>ATH/SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>CHRISTOPHER</td>
+        <td>KLEPPER</td>
+        <td>ATH/SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>AUBREY</td>
+        <td>LINDBERG-BUCHORN</td>
+        <td>ATH/SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>ANTHONY</td>
+        <td>MANCUSO</td>
+        <td>SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>ADAM</td>
+        <td>MCLAIN</td>
+        <td>ATH/SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>LAUREN</td>
+        <td>O FARREALL</td>
+        <td>SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>JENNIFER</td>
+        <td>OCHESTER</td>
+        <td>SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>JILL</td>
+        <td>RUEB</td>
+        <td>CTE</td>
+    </tr>
+    <tr>
+        <td>BRIAN</td>
+        <td>SHAFFER</td>
+        <td>SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>GREGGORY</td>
+        <td>SHAW</td>
+        <td>SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>BRADLEY</td>
+        <td>WEISE</td>
+        <td>ATH/SOCIAL_STUDIES</td>
+    </tr>
+    <tr>
+        <td>BETTY</td>
+        <td>CISNEROS</td>
+        <td>WORLD_LANG</td>
+    </tr>
+    <tr>
+        <td>JUDITH</td>
+        <td>KEMP</td>
+        <td>WORLD_LANG</td>
+    </tr>
+    <tr>
+        <td>JUSTICE</td>
+        <td>OBIOHA</td>
+        <td>WORLD_LANG</td>
+    </tr>
+    <tr>
+        <td>ANGALEE</td>
+        <td>RODEA</td>
+        <td>WORLD_LANG</td>
+    </tr>
+    <tr>
+        <td>SARAH</td>
+        <td>ROE</td>
+        <td>WORLD_LANG</td>
+    </tr>
+    <tr>
+        <td>BEATRIZ</td>
+        <td>ROJAS</td>
+        <td>WORLD_LANG</td>
+    </tr>
+    <tr>
+        <td>LUIS</td>
+        <td>SARAY CASTRO</td>
+        <td>WORLD_LANG</td>
+    </tr>
+    <tr>
+        <td>CARMEN</td>
+        <td>SILVERO</td>
+        <td>WORLD_LANG</td>
+    </tr>
+    <tr>
+        <td>KASANDRA</td>
+        <td>DIOMANDE</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>EMILY</td>
+        <td>WIEMAN</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>ALEXIA</td>
+        <td>DYAR</td>
+        <td>ATH/ENG</td>
+    </tr>
+    <tr>
+        <td>JENNIFER</td>
+        <td>DYER</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>BLAISA</td>
+        <td>ESPOSITO</td>
+        <td>ATH/ENG</td>
+    </tr>
+    <tr>
+        <td>ROBIN</td>
+        <td>HENDERSON</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>MATHEW</td>
+        <td>HOADLEY</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>EMILY</td>
+        <td>HUFFMAN</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>ALEX</td>
+        <td>LAIRD</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>JAMES</td>
+        <td>MICHIELS</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>VY</td>
+        <td>PHAM</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>STEPHANIE</td>
+        <td>RIBAS</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>KATY</td>
+        <td>WEEKS</td>
+        <td>ATH/ENG</td>
+    </tr>
+    <tr>
+        <td>LEILA</td>
+        <td>WESLEY</td>
+        <td>ENG</td>
+    </tr>
+    <tr>
+        <td>MELODY</td>
+        <td>ROBERTSON</td>
+        <td>ESL</td>
+    </tr>
+    <tr>
+        <td>TINA</td>
+        <td>WYATT</td>
+        <td>ESL</td>
+    </tr>
+    <tr>
+        <td>CHELSEA</td>
+        <td>CASON</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>AMADNA</td>
+        <td>CORDES</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>CAMPBELL</td>
+        <td>DUNCAN</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>GABRIELA</td>
+        <td>GARCIA</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>KIERSTA</td>
+        <td>HOOVER</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>ASHLYN</td>
+        <td>MEDINA</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>KAYA</td>
+        <td>O MALLEY</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>ALLISON</td>
+        <td>PERTO</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>AMANDA</td>
+        <td>PERTODANIEL REBERGER</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>ROB</td>
+        <td>SALDANA</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>RYAN</td>
+        <td>SIRNA</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>MELISSA</td>
+        <td>STARKWEATHER</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>MICHAEL</td>
+        <td>SWIREN</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>SAUNDRA</td>
+        <td>TRUCHARD</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>ASHLEY</td>
+        <td>WILLIAMS</td>
+        <td>FINE_ART</td>
+    </tr>
+    <tr>
+        <td>JORDAN</td>
+        <td>KOTLARCZYK</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>STEPHANIE</td>
+        <td>LEATHERWOOD</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>TODD</td>
+        <td>LEUPOLD</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>LENORE</td>
+        <td>MCCLANAHAN</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>KATHERYN</td>
+        <td>NARON</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>TRACY</td>
+        <td>NOLAN</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>RUDOLFO</td>
+        <td>ORTIZ</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>JACKIE</td>
+        <td>PALERMO</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>MARK</td>
+        <td>RAGUE</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>SCHMIDT</td>
+        <td>PAM</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>SHIELA</td>
+        <td>SMITH</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>JODEE</td>
+        <td>WILSON</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>KENDELL</td>
+        <td>WINTERS</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>MICHAEL</td>
+        <td>WINTERS</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>MICHELLE</td>
+        <td>YU</td>
+        <td>SPED</td>
+    </tr>
+    <tr>
+        <td>LIANA</td>
+        <td>ZIENTEK</td>
+        <td>SPED</td>
+    </tr><!-- go here -->
+
+</table>
+</p>
+
+<!--hide prompts-->
+<style>
+    #studenttable {
+        display: none;
+    }
+
+    #teachertable {
+        display: none;
+    }
+
+    #dropdowndep {
+        display: none;
+    }
+
+    #dropdownper {
+        display: none;
+    }
+
+    #dropdowngrade {
+        display: none;
+    }
+</style>
+
+
+
+<!--tab switch and reset dropdown code-->
+<script>
+    var tableA = document.getElementById("studenttable");
+    var tableB = document.getElementById("teachertable");
+    var DropdownDep = document.getElementById("dropdowndep");
+    var DropdownPer = document.getElementById("dropdownper");
+    var DropdownGrd = document.getElementById("dropdowngrade");
+
+    var btnTabA = document.getElementById("showTableA");
+    var btnTabB = document.getElementById("showTableB");
+    // Student Tab
+    btnTabA.onclick = function () {
+        tableA.style.display = "table";
+        tableB.style.display = "none";
+        DropdownGrd.style.display = "block";
+        DropdownDep.style.display = "none";
+        DropdownPer.style.display = "none";
+        DropdownGrd.selectedIndex = 0;
+    } // Teacher Tab
+    btnTabB.onclick = function () {
+        tableA.style.display = "none";
+        tableB.style.display = "table";
+        DropdownDep.style.display = "block";
+        DropdownPer.style.display = "block";
+        DropdownGrd.style.display = "none";
+        DropdownDep.selectedIndex = 0;
+        DropdownPer.selectedIndex = 0;
+
+    }
+
+</script>
+
+
+
+<br />
+
+
+</body>
+
+{% endblock content %}

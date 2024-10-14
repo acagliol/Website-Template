@@ -1,0 +1,116 @@
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #fff;
+    background-color: #1f2029;
+    overflow-x: hidden;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 4%;
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index:0;
+}
+.sec-center {
+    position: relative;
+    max-width: 100%;
+    text-align: center;
+    z-index: 200;
+  }
+  [type="checkbox"]:checked,
+  [type="checkbox"]:not(:checked){
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .dark-light:checked + label,
+.dark-light:not(:checked) + label{
+position: fixed;
+top: 1.5%;
+right: 14%;
+z-index: 20000;
+display: block;
+border-radius: 50%;
+width: 46px;
+height: 46px;
+cursor: pointer;
+transition: all 200ms linear;
+box-shadow: 0 0 25px rgba(255,235,167,.45);
+}
+.dark-light:checked + label{
+transform: rotate(360deg);
+}
+.dark-light:checked + label:after,
+.dark-light:not(:checked) + label:after{
+position: absolute;
+content: '';
+top: 1px;
+left: 1px;
+overflow: hidden;
+z-index: 2;
+display: block;
+border-radius: 50%;
+width: 44px;
+height: 44px;
+background-color: #102770;
+background-image: url('moonFace.webp');
+background-size: 50px 50px;
+background-repeat: no-repeat;
+background-position: center;
+transition: all 200ms linear;
+opacity: 0;
+}
+.dark-light:checked + label:after {
+opacity: 1;
+}
+.dark-light:checked + label:before,
+.dark-light:not(:checked) + label:before{
+position: absolute;
+content: '';
+top: 0;
+left: 0;
+overflow: hidden;
+z-index: 1;
+display: block;
+border-radius: 50%;
+width: 46px;
+height: 46px;
+background-color: #48dbfb;
+background-image: url('sunFace.webp');
+background-size: 50px 50px;
+background-repeat: no-repeat;
+background-position: center;
+transition: all 200ms linear;
+}
+.dark-light:checked + label:before{
+background-color: #000;
+}
+
+.light-back{
+position: fixed;
+top: 0;
+left: 0;
+z-index: -10;
+background-color: #fff;
+overflow: hidden;
+background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+background-position: center;
+background-repeat: repeat;
+background-size: 4%;
+height: 100%;
+width: 100%;
+transition: all 200ms linear;
+opacity: 0;
+}
+.dark-light:checked ~ .light-back{
+opacity: 1;
+}
