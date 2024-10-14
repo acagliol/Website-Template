@@ -8,7 +8,7 @@ Step 3:<br />
 &emsp;  DO NOT PRESS "Commit changes"!!!<br />
 &emsp;  MAKE SURE IT SAYS "Propose changes"<br />
 Step 4:<br />
-&emsp;  Set the title of your branch to "date name" ex: "11/15 Josh"<br />
+&emsp;  Set the title of your branch to "date name" ex: "11/15 Explaination"<br />
 Step 5:<br />
 &emsp;  Click "Create pull request"<br />
 Step 6:<br />
